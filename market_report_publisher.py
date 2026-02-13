@@ -72,20 +72,42 @@ class MarketReportPublisher:
                 draw.line([(x, 100), (x+150, 200)], fill=gold_color, width=3)
                 draw.ellipse([x+100, 250, x+180, 330], outline=gold_color, width=2)
             
+            # 尝试加载字体（支持Windows和Linux）
+            title_font = None
+            date_font = None
+            
+            # 字体路径列表（Windows和Linux）
+            font_paths = [
+                # Windows路径
+                ("C:/Windows/Fonts/msyhbd.ttc", "C:/Windows/Fonts/msyh.ttc"),
+                ("C:/Windows/Fonts/simhei.ttf", "C:/Windows/Fonts/simhei.ttf"),
+                # Linux常见路径
+                ("/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc", "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc"),
+                ("/usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf", "/usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf"),
+                ("/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc", "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc"),
+                # macOS路径
+                ("/System/Library/Fonts/PingFang.ttc", "/System/Library/Fonts/PingFang.ttc"),
+                ("/Library/Fonts/Songti.ttc", "/Library/Fonts/Songti.ttc"),
+            ]
+            
             # 尝试加载字体
-            try:
-                # Windows系统字体路径
-                title_font = ImageFont.truetype("C:/Windows/Fonts/msyhbd.ttc", 120)
-                date_font = ImageFont.truetype("C:/Windows/Fonts/msyh.ttc", 50)
-            except:
+            for title_path, date_path in font_paths:
                 try:
-                    title_font = ImageFont.truetype("C:/Windows/Fonts/simhei.ttf", 120)
-                    date_font = ImageFont.truetype("C:/Windows/Fonts/simhei.ttf", 50)
+                    title_font = ImageFont.truetype(title_path, 120)
+                    date_font = ImageFont.truetype(date_path, 50)
+                    print(f"✓ 成功加载字体: {title_path}")
+                    break
                 except:
-                    # 如果找不到字体，使用默认字体
-                    title_font = ImageFont.load_default()
-                    date_font = ImageFont.load_default()
-                    print("⚠ 警告：未找到中文字体，使用默认字体")
+                    continue
+            
+            # 如果所有字体都失败，使用默认字体
+            if title_font is None:
+                print("⚠ 警告：未找到中文字体，使用默认字体（可能无法显示中文）")
+                print("💡 建议：在Linux上安装中文字体")
+                print("   Ubuntu/Debian: sudo apt-get install fonts-wqy-zenhei")
+                print("   CentOS/RHEL: sudo yum install wqy-zenhei-fonts")
+                title_font = ImageFont.load_default()
+                date_font = ImageFont.load_default()
             
             # 绘制标题"行情晚报"
             title_text = "行情晚报"
