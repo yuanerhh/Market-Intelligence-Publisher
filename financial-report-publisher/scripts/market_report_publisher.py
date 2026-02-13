@@ -232,7 +232,7 @@ class MarketReportPublisher:
             "articles": [
                 {
                     "title": title,
-                    "author": "AI-Trending",
+                    "author": "yuaner",
                     "digest": "今日A股、美股、期货市场收盘行情汇总",
                     "content": content,
                     "content_source_url": "",

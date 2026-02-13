@@ -254,7 +254,7 @@ class MorningReportPublisher:
             "articles": [
                 {
                     "title": title,
-                    "author": "AI-Trending",
+                    "author": "yuaner",
                     "digest": "隔夜美股、亚太市场行情及今日A股展望",
                     "content": content,
                     "content_source_url": "",

@@ -141,7 +141,7 @@ python market_report_publisher.py
 - ✅ 封面图片本地生成
 - ✅ UTF-8编码修复
 - ✅ 标题层级优化
-- ✅ 作者改为AI-Trending
+- ✅ 作者改为yuaner
 
 ---
 
