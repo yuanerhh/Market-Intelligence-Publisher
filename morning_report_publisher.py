@@ -76,31 +76,44 @@ class MorningReportPublisher:
                 # Windows路径
                 ("C:/Windows/Fonts/msyhbd.ttc", "C:/Windows/Fonts/msyh.ttc"),
                 ("C:/Windows/Fonts/simhei.ttf", "C:/Windows/Fonts/simhei.ttf"),
-                # Linux常见路径
+                # Linux常见路径 - 文泉驿
                 ("/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc", "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc"),
+                ("/usr/share/fonts/wqy-zenhei/wqy-zenhei.ttc", "/usr/share/fonts/wqy-zenhei/wqy-zenhei.ttc"),
+                # Linux - Droid
                 ("/usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf", "/usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf"),
+                # Linux - Noto
                 ("/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc", "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc"),
+                ("/usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc", "/usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc"),
+                # Linux - 其他常见位置
+                ("/usr/share/fonts/truetype/arphic/uming.ttc", "/usr/share/fonts/truetype/arphic/uming.ttc"),
                 # macOS路径
                 ("/System/Library/Fonts/PingFang.ttc", "/System/Library/Fonts/PingFang.ttc"),
                 ("/Library/Fonts/Songti.ttc", "/Library/Fonts/Songti.ttc"),
             ]
             
             # 尝试加载字体
+            last_error = None
             for title_path, date_path in font_paths:
                 try:
                     title_font = ImageFont.truetype(title_path, 120)
                     date_font = ImageFont.truetype(date_path, 50)
                     print(f"✓ 成功加载字体: {title_path}")
                     break
-                except:
+                except Exception as e:
+                    last_error = str(e)
                     continue
             
             # 如果所有字体都失败，使用默认字体
             if title_font is None:
                 print("⚠ 警告：未找到中文字体，使用默认字体（可能无法显示中文）")
+                print(f"✗ 最后错误: {last_error}")
                 print("💡 建议：在Linux上安装中文字体")
                 print("   Ubuntu/Debian: sudo apt-get install fonts-wqy-zenhei")
                 print("   CentOS/RHEL: sudo yum install wqy-zenhei-fonts")
+                print("")
+                print("🔍 调试信息：尝试查找系统中的中文字体")
+                print("   运行命令: fc-list :lang=zh")
+                print("   或: find /usr/share/fonts -name '*.ttf' -o -name '*.ttc'")
                 title_font = ImageFont.load_default()
                 date_font = ImageFont.load_default()
             
