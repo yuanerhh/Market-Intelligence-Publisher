@@ -54,6 +54,35 @@ Market-Intelligence-Publisher/
 
 ## 🚀 快速开始
 
+### 前置要求
+
+- Python 3.7+
+- 微信公众号（已认证）
+- 阿里云账号（可选）
+
+### 依赖安装
+
+```bash
+pip install requests Pillow
+```
+
+### Linux系统额外要求
+
+⚠️ **重要**：Linux系统需要安装中文字体，否则封面图片无法显示文字！
+
+```bash
+# Ubuntu/Debian
+sudo apt-get install fonts-wqy-zenhei
+
+# CentOS/RHEL
+sudo yum install wqy-zenhei-fonts
+
+# 更新字体缓存
+fc-cache -fv
+```
+
+详细说明请查看：[LINUX_FONT_GUIDE.md](LINUX_FONT_GUIDE.md)
+
 ### 1️⃣ 配置密钥
 
 编辑 `config.json`，填入：
