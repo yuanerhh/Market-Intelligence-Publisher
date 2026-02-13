@@ -1,0 +1,15 @@
+{
+  "wechat": {
+    "appid": "YOUR_WECHAT_APPID",
+    "secret": "YOUR_WECHAT_SECRET",
+    "comment": "从微信公众平台获取: https://mp.weixin.qq.com -> 开发 -> 基本配置"
+  },
+  "aliyun": {
+    "api_key": "YOUR_ALIYUN_DASHSCOPE_API_KEY",
+    "comment": "从阿里云百炼平台获取: https://bailian.console.aliyun.com -> API-KEY管理"
+  },
+  "settings": {
+    "auto_publish": false,
+    "comment": "是否自动发布（true）或仅创建草稿（false）"
+  }
+}

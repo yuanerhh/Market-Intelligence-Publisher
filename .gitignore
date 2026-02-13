@@ -1,0 +1,59 @@
+# 配置文件（包含敏感信息）
+config.json
+wechat_config.json
+
+# 生成的封面图片
+*.jpg
+*.jpeg
+*.png
+morning_cover_*.jpg
+cover_*.jpg
+
+# Python缓存
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# 虚拟环境
+venv/
+env/
+ENV/
+
+# IDE配置
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 日志文件
+logs/
+*.log
+
+# 临时文件
+*.tmp
+*.temp
+*.bak
+
+# 测试文件
+test_*.py
+*_test.py
+
+# 历史文档
+2026年*.md
+2026年*.txt
+
+# Windows
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# 技能包打包文件
+*.skill
